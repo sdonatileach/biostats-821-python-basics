@@ -1,12 +1,14 @@
-# # Python "data science"
+# BIOSTATS Assignment 1
+# Mohammad Anas, Aarushi Verma, Sydney Donati-Leach
 
-# Develop two Python functions:
+import math
 
-file = "/Users/Aarushi/Duke/MIDS/Spring 2022/821_BIOSTAT/HW/python-basics-biostats-821/example.txt"
-# ## `get_data()`
+file = "/Users/mohammadanas/Desktop/Duke MIDS/Spring 2021/SoftwareTools/Assignment_1/python-basics-biostats-821/example.txt"
+
 def get_data(file):
+    '''This function return the data as a list of lists'''
 
-    # _accepts_: a file path (string) and
+
     integers = []
     with open(file) as file:
         for line in file:
@@ -16,14 +18,8 @@ def get_data(file):
     return integers
 
 
-# _outputs_: a list of lists of integers.
 
-# The file will contain two lines of integers separated by spaces, for example:
-# ```text
-# 1 44 31 4 5 6
-# 21 3 2 13 55 72
-# ```
-import math
+
 
 
 def average(lst):
@@ -48,29 +44,53 @@ def cov(lst1, lst2):
     cov = sum / len(lst1)
     return cov
 
+def corr(lst1, lst2):
 
-# ## `analyze_data()`
-def analyze_data(integers):
+    cov_ = cov(lst1,lst2)
+    std1 = standard_dev(lst1)
+    std2 = standard_dev(lst2)
+    std_ = std1*std2
+
+    return cov_/std_
+    
+
+
+
+def analyze_data(integers,operation = 'average'):
+    '''This function perform the stated operation on the data.
+    The default operation has been set to the average '''
+
     new_list = integers[0] + integers[1]
-    average(new_list)
+
+    one_list = [int(i) for i in new_list]
+    lst1 = [int(i) for i in integers[0]]
+    lst2 = [int(i) for i in integers[1]]
+
+    if operation == 'average':
+        ans = round(average(one_list),2)
+        print('The average is' , ans)
+
+    elif operation == 'standard deviation':
+        ans = round(standard_dev(one_list),2)
+        print('The standard deviation is' , ans)
+
+    
+    elif operation == 'covariance':
+        ans = round(cov(lst1,lst2),2)
+        print('The covariance is' , ans)
+
+    elif operation == 'correlation':
+        ans = round(corr(lst1, lst2),2)
+        print('The correlation is' , ans)
+
+    else:
+        return 'Enter the right operation value'
 
 
-# _accepts_:
-# 1. a list of lists of integers and
-# 2. a string option that can be one of the following:
-#     * `"average"` (of all the data together)
-#     * `"standard deviation"` (of all the data together)
-#     * `"covariance"` (between the two lists)
-#     * `"correlation"` ([Pearson's correlation coefficient](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient))
-# and
 
-# _outputs_: a floating-point number.
 
-# For the above example, your results should be about 21.4, 22.9, -257, and -0.594, respectively.
 
-# ## constraints
-# * You must submit your work in the form of a GitHub repository.
-#   1. Invite the GitHub user `patrickkwang` to collaborate on your repository.
-#   2. Include a link to the repository in the text of your Sakai submission.
-# * You must work in group of 2 or 3 (not alone - we're practicing collaboration). We expect to see commits from each student, though you're welcome to pair-program as well.
-# * You may `import math`, but no other packages, standard or otherwise.
+
+    
+
+ 
