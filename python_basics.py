@@ -2,7 +2,7 @@
 
 # Develop two Python functions:
 
-file = "/mnt/c/sdona/Documents/Duke/22Spring/821BIOSTAT/01Assignment/example.txt"
+file = "/mnt/c/Users/sdona/Documents/Duke/22Spring/821BIOSTAT/01Assignment/example.txt"
 # ## `get_data()`
 def get_data(file):
 
@@ -24,8 +24,19 @@ def get_data(file):
 # 1 44 31 4 5 6
 # 21 3 2 13 55 72
 # ```
+import math
+
 def average(lst):
     return sum(lst)/len(lst)
+
+def standard_dev(lst):
+    avg = average(lst)
+    integer = 0
+    for i in lst:
+        integer += (i - avg)**2
+    a = integer/len(lst)
+    return math.sqrt(a)
+
 # ## `analyze_data()`
 def analyze_data(integers):
     new_list = integers[0] + integers[1]
