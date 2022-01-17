@@ -5,9 +5,9 @@ import math
 
 file = "/Users/mohammadanas/Desktop/Duke MIDS/Spring 2021/SoftwareTools/Assignment_1/python-basics-biostats-821/example.txt"
 
-def get_data(file):
-    '''This function return the data as a list of lists'''
 
+def get_data(file):
+    """This function return the data as a list of lists"""
 
     integers = []
     with open(file) as file:
@@ -16,10 +16,6 @@ def get_data(file):
             integers.append(l)
         file.close()
     return integers
-
-
-
-
 
 
 def average(lst):
@@ -44,21 +40,20 @@ def cov(lst1, lst2):
     cov = sum / len(lst1)
     return cov
 
+
 def corr(lst1, lst2):
 
-    cov_ = cov(lst1,lst2)
+    cov_ = cov(lst1, lst2)
     std1 = standard_dev(lst1)
     std2 = standard_dev(lst2)
-    std_ = std1*std2
+    std_ = std1 * std2
 
-    return cov_/std_
-    
-
+    return cov_ / std_
 
 
-def analyze_data(integers,operation = 'average'):
-    '''This function perform the stated operation on the data.
-    The default operation has been set to the average '''
+def analyze_data(integers, operation="average"):
+    """This function perform the stated operation on the data.
+    The default operation has been set to the average"""
 
     new_list = integers[0] + integers[1]
 
@@ -66,31 +61,21 @@ def analyze_data(integers,operation = 'average'):
     lst1 = [int(i) for i in integers[0]]
     lst2 = [int(i) for i in integers[1]]
 
-    if operation == 'average':
-        ans = round(average(one_list),2)
-        print('The average is' , ans)
+    if operation == "average":
+        ans = round(average(one_list), 2)
+        print("The average is", ans)
 
-    elif operation == 'standard deviation':
-        ans = round(standard_dev(one_list),2)
-        print('The standard deviation is' , ans)
+    elif operation == "standard deviation":
+        ans = round(standard_dev(one_list), 2)
+        print("The standard deviation is", ans)
 
-    
-    elif operation == 'covariance':
-        ans = round(cov(lst1,lst2),2)
-        print('The covariance is' , ans)
+    elif operation == "covariance":
+        ans = round(cov(lst1, lst2), 2)
+        print("The covariance is", ans)
 
-    elif operation == 'correlation':
-        ans = round(corr(lst1, lst2),2)
-        print('The correlation is' , ans)
+    elif operation == "correlation":
+        ans = round(corr(lst1, lst2), 2)
+        print("The correlation is", ans)
 
     else:
-        return 'Enter the right operation value'
-
-
-
-
-
-
-    
-
- 
+        return "Enter the right operation value"
