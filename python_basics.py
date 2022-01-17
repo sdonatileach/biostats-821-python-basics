@@ -2,22 +2,36 @@
 
 # Develop two Python functions:
 
+file = "/mnt/c/sdona/Documents/Duke/22Spring/821BIOSTAT/01Assignment/example.txt"
 # ## `get_data()`
-def get_data():
+def get_data(file):
 
 # _accepts_: a file path (string) and
+    integers = []
+    with open(file) as file:
+        for line in file:
+            l = line.split()
+            integers.append(l)
+        file.close()
+    return integers
+    
+
 
 # _outputs_: a list of lists of integers.
 
 # The file will contain two lines of integers separated by spaces, for example:
-
 # ```text
 # 1 44 31 4 5 6
 # 21 3 2 13 55 72
 # ```
-
+def average(lst):
+    return sum(lst)/len(lst)
 # ## `analyze_data()`
-def analyze_data():
+def analyze_data(integers):
+    new_list = integers[0] + integers[1]
+    average(new_list)
+
+
 # _accepts_:
 # 1. a list of lists of integers and
 # 2. a string option that can be one of the following:
