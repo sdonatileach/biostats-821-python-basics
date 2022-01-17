@@ -2,11 +2,11 @@
 
 # Develop two Python functions:
 
-file = "/mnt/c/Users/sdona/Documents/Duke/22Spring/821BIOSTAT/01Assignment/example.txt"
+file = "/Users/Aarushi/Duke/MIDS/Spring 2022/821_BIOSTAT/HW/python-basics-biostats-821/example.txt"
 # ## `get_data()`
 def get_data(file):
 
-# _accepts_: a file path (string) and
+    # _accepts_: a file path (string) and
     integers = []
     with open(file) as file:
         for line in file:
@@ -14,7 +14,6 @@ def get_data(file):
             integers.append(l)
         file.close()
     return integers
-    
 
 
 # _outputs_: a list of lists of integers.
@@ -26,16 +25,29 @@ def get_data(file):
 # ```
 import math
 
+
 def average(lst):
-    return sum(lst)/len(lst)
+    return sum(lst) / len(lst)
+
 
 def standard_dev(lst):
     avg = average(lst)
     integer = 0
     for i in lst:
-        integer += (i - avg)**2
-    a = integer/len(lst)
+        integer += (i - avg) ** 2
+    a = integer / len(lst)
     return math.sqrt(a)
+
+
+def cov(lst1, lst2):
+    avg_1 = average(lst1)
+    avg_2 = average(lst2)
+    sum = 0
+    for i in range(len(lst1)):
+        sum += (lst1[i] - avg_1) * (lst2[i] - avg_2)
+    cov = sum / len(lst1)
+    return cov
+
 
 # ## `analyze_data()`
 def analyze_data(integers):
