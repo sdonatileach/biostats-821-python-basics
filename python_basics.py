@@ -6,7 +6,7 @@ import math
 file = "/Users/mohammadanas/Desktop/Duke MIDS/Spring 2021/SoftwareTools/Assignment_1/python-basics-biostats-821/example.txt"
 
 
-def get_data(file):
+def get_data(file: list[int]) -> list[int]:
     """This function return the data as a list of lists"""
 
     integers = []
