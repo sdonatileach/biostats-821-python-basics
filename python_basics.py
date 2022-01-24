@@ -6,23 +6,24 @@ import math
 file = "/Users/mohammadanas/Desktop/Duke MIDS/Spring 2021/SoftwareTools/Assignment_1/python-basics-biostats-821/example.txt"
 
 
-def get_data(file):
+def get_data(file: str) -> list[list[int]]:
     """This function return the data as a list of lists"""
-
     integers = []
     with open(file) as file:
         for line in file:
             l = line.split()
             integers.append(l)
         file.close()
-    return integers
+    lst1 = [int(i) for i in integers[0]]
+    lst2 = [int(i) for i in integers[1]]
+    return lst1 + lst2
 
 
-def average(lst):
+def average(lst: list[int]) -> int:
     return sum(lst) / len(lst)
 
 
-def standard_dev(lst):
+def standard_dev(lst: list[int]) -> int:
     avg = average(lst)
     integer = 0
     for i in lst:
@@ -31,7 +32,7 @@ def standard_dev(lst):
     return math.sqrt(a)
 
 
-def cov(lst1, lst2):
+def cov(lst1, lst2) -> int:
     avg_1 = average(lst1)
     avg_2 = average(lst2)
     sum = 0
@@ -41,7 +42,7 @@ def cov(lst1, lst2):
     return cov
 
 
-def corr(lst1, lst2):
+def corr(lst1, lst2) -> int:
 
     cov_ = cov(lst1, lst2)
     std1 = standard_dev(lst1)
@@ -51,7 +52,7 @@ def corr(lst1, lst2):
     return cov_ / std_
 
 
-def analyze_data(integers, operation="average"):
+def analyze_data(integers, operation="average")  -> int:
     """This function perform the stated operation on the data.
     The default operation has been set to the average"""
 
